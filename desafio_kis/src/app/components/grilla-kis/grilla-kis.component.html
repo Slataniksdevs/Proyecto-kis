@@ -1,0 +1,36 @@
+<h1>funcionaaa</h1>
+
+<div>
+    <h2>Grilla de Personas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>RUT</th>
+          <th>Sexo</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Correo Electrónico</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of personas">
+          <td>{{ persona.nombre }}</td>
+          <td>{{ persona.apellido }}</td>
+          <td>{{ persona.rut }}</td>
+          <td>{{ persona.sexo }}</td>
+          <td>{{ persona.telefono }}</td>
+          <td>{{ persona.direccion }}</td>
+          <td>{{ persona.fechaNacimiento }}</td>
+          <td>{{ persona.correoElectronico }}</td>
+          <td>
+            <button (click)="eliminarPersona(persona.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
