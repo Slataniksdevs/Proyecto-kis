@@ -1,7 +1,10 @@
 const express = require('express');
 const mysql = require('mysql');
-
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
+
 
 // Configuración de la conexión a la base de datos MySQL
 const dbConfig = {
@@ -28,7 +31,7 @@ connection.connect((err) => {
 app.use(express.json());
 
 // Ruta GET para obtener todos los pacientes
-app.get('/api/pacientes', (req, res) => {
+app.get('/api/personas', (req, res) => {
     // Consulta SQL para obtener todos los pacientes
     const sql = 'SELECT * FROM persona';
 

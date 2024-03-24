@@ -1,5 +1,31 @@
-<div>
-  <h1>Aplicación de Ejemplo</h1>
-  <app-grilla-kis></app-grilla-kis> 
-  
+<div class="container">
+  <h2>Datos de la API</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Rut</th>
+        <th>Sexo</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Correo Electrónico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.ID }}</td>
+        <td>{{ item.Nombre }}</td>
+        <td>{{ item.Apellido }}</td>
+        <td>{{ item.Rut }}</td>
+        <td>{{ item.Sexo }}</td>
+        <td>{{ item.Telefono }}</td>
+        <td>{{ item.Direccion }}</td>
+        <td>{{ item.FechaNacimiento }}</td>
+        <td>{{ item.CorreoElectronico }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
