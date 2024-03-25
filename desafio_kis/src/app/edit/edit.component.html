@@ -1,0 +1,33 @@
+<h2>Editar Usuario</h2>
+
+<input type="text" placeholder="Buscar por nombre" #inputNombre>
+<button (click)="buscarPorNombre(inputNombre.value)">Buscar</button>
+
+<ul>
+  <li *ngFor="let persona of personas" (click)="seleccionarPersona(persona)">
+    {{ persona.Nombre }} {{ persona.Apellido }}
+  </li>
+</ul>
+
+<div *ngIf="personaSeleccionada">
+  <h3>Datos del usuario seleccionado:</h3>
+  <form [formGroup]="personaForm">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre">
+    <label>Apellido:</label>
+    <input type="text" formControlName="apellido">
+    <label>Rut:</label>
+    <input type="text" formControlName="rut">
+    <label>Sexo:</label>
+    <input type="text" formControlName="sexo">
+    <label>Teléfono:</label>
+    <input type="text" formControlName="telefono">
+    <label>Dirección:</label>
+    <input type="text" formControlName="direccion">
+    <label>Fecha de Nacimiento:</label>
+    <input type="date" formControlName="fechaNacimiento">
+    <label>Correo Electrónico:</label>
+    <input type="email" formControlName="correoElectronico">
+    <button (click)="editarPersona()">Editar</button>
+  </form>
+</div>

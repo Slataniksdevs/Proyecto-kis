@@ -47,6 +47,8 @@ app.get('/api/personas', (req, res) => {
     });
 });
 
+
+
 app.post('/api/persona', (req, res) => {
     const { nombre, apellido, rut, sexo, telefono, direccion, fechaNacimiento, correoElectronico } = req.body;
 
@@ -66,31 +68,6 @@ app.post('/api/persona', (req, res) => {
     });
 });
 // Resto de los endpoints y definiciones de rutas...
-
-app.put('/api/persona/:id', (req, res) => {
-    const personaId = req.params.id;
-    const { nombre, apellido, rut, sexo, telefono, direccion, fechaNacimiento, correoElectronico } = req.body;
-
-    // Consulta SQL para actualizar los datos de la persona en la base de datos
-    const sql = 'UPDATE persona SET nombre = ?, apellido = ?, rut = ?, sexo = ?, telefono = ?, direccion = ?, fechaNacimiento = ?, correoElectronico = ? WHERE id = ?';
-    const values = [nombre, apellido, rut, sexo, telefono, direccion, fechaNacimiento, correoElectronico, personaId];
-
-    // Ejecutar la consulta SQL
-    connection.query(sql, values, (err, result) => {
-        if (err) {
-            console.error('Error al actualizar persona:', err);
-            res.status(500).json({ error: 'Error al actualizar persona' });
-            return;
-        }
-        // Verificar si se actualizó correctamente
-        if (result.affectedRows === 0) {
-            res.status(404).json({ error: 'Persona no encontrada' });
-            return;
-        }
-        // Enviar una respuesta indicando que la persona fue actualizada correctamente
-        res.json({ message: 'Persona actualizada correctamente', personaId: personaId });
-    });
-});
 
 app.delete('/api/persona/:id', (req, res) => {
     const personaId = req.params.id;
@@ -116,6 +93,54 @@ app.delete('/api/persona/:id', (req, res) => {
     });
 });
 
+
+app.get('/api/personas/buscar/:nombre', (req, res) => {
+    const nombre = req.params.nombre;
+
+    // Consulta SQL para buscar personas por nombre
+    const sql = 'SELECT * FROM persona WHERE nombre = ?';
+
+    // Ejecutar la consulta SQL
+    connection.query(sql, [nombre], (err, results) => {
+        if (err) {
+            console.error('Error al ejecutar la consulta:', err);
+            res.status(500).json({ error: 'Error al buscar personas por nombre' });
+            return;
+        }
+        // Verificar si se encontraron resultados
+        if (results.length === 0) {
+            res.status(404).json({ error: 'No se encontraron personas con ese nombre' });
+            return;
+        }
+        // Enviar los resultados como respuesta
+        res.json(results);
+    });
+});
+// Endpoint para actualizar los atributos de un registro por su ID
+app.put('/api/persona/:id', (req, res) => {
+    const personaId = req.params.id;
+    const { nombre, apellido, rut, sexo, telefono, direccion, fechaNacimiento, correoElectronico } = req.body;
+
+    // Consulta SQL para actualizar los atributos de la persona en la base de datos
+    const sql = 'UPDATE persona SET nombre = ?, apellido = ?, rut = ?, sexo = ?, telefono = ?, direccion = ?, fechaNacimiento = ?, correoElectronico = ? WHERE id = ?';
+    const values = [nombre, apellido, rut, sexo, telefono, direccion, fechaNacimiento, correoElectronico, personaId];
+
+    // Ejecutar la consulta SQL
+    connection.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Error al actualizar persona:', err);
+            res.status(500).json({ error: 'Error al actualizar persona' });
+            return;
+        }
+        // Verificar si se actualizó correctamente
+        if (result.affectedRows === 0) {
+            res.status(404).json({ error: 'Persona no encontrada' });
+            return;
+        }
+        // Enviar una respuesta indicando que la persona fue actualizada correctamente
+        res.json({ message: 'Persona actualizada correctamente', personaId: personaId });
+    });
+});
 // Iniciar el servidor y hacer que escuche en el puerto 3000
 const PORT = 3000;
 app.listen(PORT, () => {
