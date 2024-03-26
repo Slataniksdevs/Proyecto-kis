@@ -37,7 +37,18 @@ export class EditComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cargarDatos();
+  }
+
+  cargarDatos(): void {
+    // Llama a tu API para cargar los datos desde la base de datos
+    this.http.get<Persona[]>('http://localhost:3000/api/personas').subscribe(data => {
+      this.personas = data;
+    }, error => {
+      console.error('Error al cargar datos:', error);
+    });
+  }
 
   buscarPorNombre(nombre: string): void {
     this.http.get<Persona[]>(`http://localhost:3000/api/personas/buscar/${nombre}`).subscribe(data => {

@@ -1,0 +1,72 @@
+
+    /* Fondo de la página */
+    body {
+        background-color: #f0f0f0;
+      }
+  
+      /* Estilo de los botones */
+      .btn-custom {
+        margin-top: 20px;
+      }
+  
+      /* Estilo de la tabla */
+      .card {
+        margin-top: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+  
+      .card-header {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 15px 15px 0 0;
+      }
+  
+      .card-body {
+        padding: 20px;
+      }
+  
+      .table {
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+  
+      th, td {
+        border-top: none !important;
+      }
+  
+      th {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+  
+      tbody tr:nth-child(odd) {
+        background-color: #f8f9fa;
+      }
+  
+      tbody tr:nth-child(even) {
+        background-color: #fff;
+      }
+  
+      td {
+        border-bottom: 1px solid #dee2e6;
+      }
+  
+      /* Estilo de los modales */
+      .modal-content {
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+  
+      .modal-header {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 15px 15px 0 0;
+      }
+  
+      .modal-footer {
+        justify-content: center;
+      }

@@ -8,14 +8,14 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component'; // Importa FormsModule
 import { ReactiveFormsModule } from '@angular/forms';
-import { RemoveComponent } from './remove/remove.component'; // Importa ReactiveFormsModule
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioComponent,
     EditComponent,
-    RemoveComponent,
+   
   ],
   imports: [
     BrowserModule,
