@@ -1,0 +1,28 @@
+/* Estilos para el header */
+.header {
+    display: flex;
+    align-items: center; /* Centrar verticalmente los elementos */
+    background-color: #f9f9f9; /* Color de fondo más profesional */
+    padding: 15px 20px; /* Espaciado interno */
+    height: 80px; /* Altura del header */
+  }
+  
+  .header-logo {
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+  }
+  
+  .header-logo img {
+    width: 150px; /* Tamaño de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+  }
+  
+  .header-title { 
+
+    flex-grow: 1; /* El texto del título ocupa todo el espacio disponible */
+    text-align: right; /* Alineación del texto a la derecha */
+    font-size: 1.2em; /* Tamaño de fuente responsivo */
+    color: #333; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */   
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+  }
+  

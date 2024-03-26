@@ -1,0 +1,54 @@
+/* Estilos para el formulario de edición */
+form {
+    max-width: 600px; /* Limita el ancho del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilos para las etiquetas */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para los campos de entrada */
+  input[type="text"],
+  input[type="email"],
+  input[type="date"] {
+    width: calc(100% - 12px); /* Resta el padding del ancho total */
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ajusta el tamaño del borde y el relleno al ancho total */
+  }
+  
+  /* Estilos para el botón de enviar */
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para el botón de enviar al pasar el mouse */
+  button:hover {
+    background-color: #0056b3;
+  }
+
+
+  .selected {
+    background-color: lightblue; /* Cambia el color de fondo al seleccionar */
+  }
+  
+  .check {
+    margin-left: 10px; /* Agrega un margen izquierdo para separar el texto del icono */
+    color: green; /* Cambia el color del icono de check */
+  }

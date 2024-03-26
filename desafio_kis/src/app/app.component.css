@@ -6,7 +6,11 @@
   
       /* Estilo de los botones */
       .btn-custom {
-        margin-top: 20px;
+        margin-top: 15px;
+      }
+
+      .custom-btn {
+        min-width: 200px; /* Tamaño mínimo */
       }
   
       /* Estilo de la tabla */

@@ -1,49 +1,56 @@
-<h1> Formulario ingreso de datos Create</h1>
+<h1>Formulario ingreso de datos Create</h1>
 
+<div class="card" style="margin-left: 25px; margin-right: 25px; margin-top: 20px;">
+  <div class="card-header">
+    <h2>Formulario de ingreso de datos</h2>
+  </div>
+  <div class="card-body">
+    <!-- Alerta para mostrar cuando el formulario no sea válido -->
+    <div class="alert alert-danger" role="alert" *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)">
+      Por favor, complete todos los campos requeridos y asegúrese de que el formato del RUT y el correo electrónico sea válido.
+    </div>
 
-<div class="card" style="margin-left: 25px; margin-right: 25px; margin-top: 20px;" >  
-        <div class="card-header">
-        <h2>Formulario de ingreso de datos</h2>
-        </div>
-      <div class="card-body">
-      <form (ngSubmit)="enviarDatos()" #formulario="ngForm">
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="formData.nombre" required>
-        </div>
-        <div class="form-group">
-          <label for="apellido">Apellido:</label>
-          <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="formData.apellido" required>
-        </div>
-        <div class="form-group">
-          <label for="rut">RUT:</label>
-          <input type="text" class="form-control" id="rut" name="rut" [(ngModel)]="formData.rut">
-        </div>
-        <div class="form-group">
-          <label for="sexo">Sexo:</label>
-          <select class="form-control" id="sexo" name="sexo" [(ngModel)]="formData.sexo" required>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="formData.telefono">
-        </div>
-        <div class="form-group">
-          <label for="direccion">Dirección:</label>
-          <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="formData.direccion">
-        </div>
-        <div class="form-group">
-          <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="formData.fechaNacimiento">
-        </div>
-        <div class="form-group">
-          <label for="correoElectronico">Correo Electrónico:</label>
-          <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" [(ngModel)]="formData.correoElectronico">
-        </div>
-        <button  style="margin-top: 10px;" type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+    <form (ngSubmit)="enviarDatos()" #formulario="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="formData.nombre" required>
       </div>
-     
+      <div class="form-group">
+        <label for="apellido">Apellido:</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="formData.apellido" required>
+      </div>
+      <div class="form-group">
+        <label for="rut">RUT:</label>
+        <input type="text" class="form-control" id="rut" name="rut" [(ngModel)]="formData.rut" pattern="[0-9]{7,8}-[0-9Kk]{1}" required>
+        <small class="form-text text-muted">Formato válido: 12345678-9</small>
+      </div>
+      <div class="form-group">
+        <label for="sexo">Sexo:</label>
+        <select class="form-control" id="sexo" name="sexo" [(ngModel)]="formData.sexo" required>
+          <option value="">Selecciona sexo</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="formData.telefono" required>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="formData.direccion" required>
+      </div>
+      <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="formData.fechaNacimiento" required>
+      </div>
+      <div class="form-group">
+        <label for="correoElectronico">Correo Electrónico:</label>
+        <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" [(ngModel)]="formData.correoElectronico" required (keyup)="verificarEmail()">
+        <small class="text-danger" *ngIf="formulario.controls['correoElectronico'].errors && formulario.controls['correoElectronico'].errors['email']">Ingrese un correo electrónico válido.</small>
+      </div>      
+      <button style="margin-top: 10px;" type="submit" class="btn btn-primary" [disabled]="!formulario.valid || !emailValido" (click)="enviarDatos()">Enviar</button>
+
+    </form>
+  </div>
 </div>

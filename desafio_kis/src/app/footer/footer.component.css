@@ -1,0 +1,37 @@
+/* Estilos para el footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9; /* Color de fondo más profesional */
+  padding: 20px; /* Espaciado interno */
+  border-top: 1px solid #ddd; /* Borde superior para separar del contenido principal */
+}
+
+.footer-logo {
+  text-align: center; /* Centrar el contenido */
+}
+
+.footer-logo img {
+  width: 100px; /* Tamaño más pequeño para la imagen */
+  height: auto; /* Altura automática para mantener la proporción */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: flex-end; /* Texto al final del footer */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #555; /* Color del texto */
+  font-weight: bold; /* Texto en negrita */
+  margin-left: 20px; /* Espaciado izquierdo entre el texto y la imagen */
+  transition: color 0.3s; /* Transición suave para el cambio de color */
+}
+
+.footer-links a:hover {
+  color: #333; /* Cambio de color al pasar el ratón por encima */
+}

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormularioComponent {
   formData: any = {}; // Objeto para almacenar los datos del formulario
-
+  emailValido: boolean = false;
   constructor(private http: HttpClient) {}
 
   // Método para enviar los datos del formulario a la API
@@ -25,5 +25,9 @@ export class FormularioComponent {
         // Maneja el error de acuerdo a tus necesidades
       }
     );
+  }
+  // Función para verificar si el campo de correo electrónico contiene al menos un "@"
+  verificarEmail(): void {
+    this.emailValido = this.formData.correoElectronico.includes('@');
   }
 }

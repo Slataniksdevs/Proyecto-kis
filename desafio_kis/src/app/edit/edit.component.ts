@@ -72,4 +72,7 @@ export class EditComponent implements OnInit {
         // Manejar el error
       });
     }
-  }}
+    
+  }
+  
+}

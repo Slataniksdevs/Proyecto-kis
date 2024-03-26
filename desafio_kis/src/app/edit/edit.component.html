@@ -1,17 +1,24 @@
-<h2>Editar Usuario</h2>
+<h2>Editar Persona</h2>
 
 <input type="text" placeholder="Buscar por nombre" #inputNombre>
 <button (click)="buscarPorNombre(inputNombre.value)">Buscar</button>
 
 <ul>
-  <li *ngFor="let persona of personas" (click)="seleccionarPersona(persona)">
+  <li *ngFor="let persona of personas" (click)="seleccionarPersona(persona)" [ngClass]="{ 'selected': personaSeleccionada === persona }">
     {{ persona.Nombre }} {{ persona.Apellido }}
+    <span *ngIf="personaSeleccionada === persona" class="check">&#10003;</span>
   </li>
 </ul>
 
 <div *ngIf="personaSeleccionada">
-  <h3>Datos del usuario seleccionado:</h3>
+  <h3>Datos de la persona seleccionada:</h3>
+  
+  <p>Persona seleccionada: {{ personaSeleccionada.Nombre }} {{ personaSeleccionada.Apellido }}</p>
+  
   <form [formGroup]="personaForm">
+    <div *ngIf="personaForm.invalid" class="alert alert-danger">
+      Por favor, complete todos los campos correctamente antes de enviar la solicitud.
+    </div>
     <label>Nombre:</label>
     <input type="text" formControlName="nombre">
     <label>Apellido:</label>
@@ -19,7 +26,10 @@
     <label>Rut:</label>
     <input type="text" formControlName="rut">
     <label>Sexo:</label>
-    <input type="text" formControlName="sexo">
+    <select formControlName="sexo">
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+    </select>
     <label>Teléfono:</label>
     <input type="text" formControlName="telefono">
     <label>Dirección:</label>
@@ -28,6 +38,9 @@
     <input type="date" formControlName="fechaNacimiento">
     <label>Correo Electrónico:</label>
     <input type="email" formControlName="correoElectronico">
-    <button (click)="editarPersona()">Editar</button>
+    <small class="text-danger" *ngIf="personaForm.get('correoElectronico')?.errors?.['email']">
+      Ingrese un correo electrónico válido.
+    </small>
+    <button (click)="editarPersona()" [disabled]="personaForm.invalid">Editar</button>
   </form>
 </div>
