@@ -98,10 +98,10 @@ app.get('/api/personas/buscar/:nombre', (req, res) => {
     const nombre = req.params.nombre;
 
     // Consulta SQL para buscar personas por nombre
-    const sql = 'SELECT * FROM persona WHERE nombre = ?';
-
+    const sql = 'SELECT * FROM persona WHERE nombre LIKE ?';
+    const values = [`%${nombre}%`];
     // Ejecutar la consulta SQL
-    connection.query(sql, [nombre], (err, results) => {
+    connection.query(sql, values, (err, results) => {
         if (err) {
             console.error('Error al ejecutar la consulta:', err);
             res.status(500).json({ error: 'Error al buscar personas por nombre' });
