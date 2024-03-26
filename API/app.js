@@ -1,20 +1,25 @@
+require('dotenv').config(); // Cargar variables de entorno desde .en
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const app = express();
+//const fs = require('fs');
+//const https = require('https');
 
 app.use(cors());
 
 
-// Configuración de la conexión a la base de datos MySQL
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: 'admin',
-    port: 3306,
-    database: 'Kis'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE
 };
 
+
+//const fs = require('fs');
+//const https = require('https');
 // Crear una conexión a la base de datos MySQL
 const connection = mysql.createConnection(dbConfig);
 
@@ -146,3 +151,9 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor API iniciado en el puerto ${PORT}`);
 });
+
+//const puertoHTTPS = 443; // Puerto HTTPS predeterminado
+//const servidorHTTPS = https.createServer(options, app);
+//servidorHTTPS.listen(puertoHTTPS, () => {
+//    console.log(`Servidor HTTPS iniciado en el puerto ${puertoHTTPS}`);
+//});

@@ -45,7 +45,8 @@ form {
 
 
   .selected {
-    background-color: lightblue; /* Cambia el color de fondo al seleccionar */
+    background-color: lightblue;
+     /* Cambia el color de fondo al seleccionar */
   }
   
   .check {
